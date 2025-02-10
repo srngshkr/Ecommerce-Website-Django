@@ -66,7 +66,7 @@ def tracker(request):
                 for item in Update:
                     updates.append({'text':item.update_desc,'time':item.timestamp})
                     response = json.dumps({"status": "success", "updates": updates, "itemsJson" :order[0].items_json},default=str)
-                return HttpResponse(response)
+                return HttpResponse(response, content_type="application/json")
             else:
                 return HttpResponse('{"status":"noitem"}')
         except Exception as e:
